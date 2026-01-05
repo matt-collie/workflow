@@ -1,14 +1,101 @@
-# VFX Pipeline Claude Agents
+# Claude Code Agents
 
-This directory contains specialized Claude Code agents for VFX production workflows.
+This directory contains specialized Claude Code agents for VFX production workflows and software development.
 
 ## What are Claude Agents?
 
-Claude Code agents are specialized AI assistants defined using markdown files. Each agent has specific expertise and capabilities tailored to different aspects of VFX production.
+Claude Code agents are specialized AI assistants defined using markdown files. Each agent has specific expertise and capabilities tailored to different domains.
 
 ## Available Agents
 
-### Asset Agent (`asset-agent.md`)
+### Software Development Agents
+
+#### Research Agent (`research-agent.md`)
+**Expertise**: Technical research and investigation
+
+**Use for**:
+- Technology evaluation and comparison
+- Library and framework research
+- Problem investigation
+- Solution feasibility analysis
+
+**Example**: "Compare React vs Vue for our frontend project and recommend which to use"
+
+---
+
+#### Development Agent (`development-agent.md`)
+**Expertise**: Software development and coding
+
+**Use for**:
+- Implementing new features
+- Fixing bugs and defects
+- Refactoring code
+- Writing tests
+- Code optimization
+
+**Example**: "Help me implement JWT authentication for the API"
+
+---
+
+#### Design Agent (`design-agent.md`)
+**Expertise**: System architecture and design
+
+**Use for**:
+- Architecture design
+- API design and specification
+- Database schema design
+- Design pattern selection
+- Technical planning
+
+**Example**: "Design a microservices architecture for our e-commerce platform"
+
+---
+
+#### Code Review Agent (`code-review-agent.md`)
+**Expertise**: Code review and quality assurance
+
+**Use for**:
+- Reviewing pull requests
+- Identifying bugs and issues
+- Security review
+- Best practices verification
+- Suggesting improvements
+
+**Example**: "Review this PR for security vulnerabilities and code quality issues"
+
+---
+
+#### Git Workflow Agent (`git-workflow-agent.md`)
+**Expertise**: Version control and collaboration workflows
+
+**Use for**:
+- Git branching strategies
+- Pull request workflows
+- Merge conflict resolution
+- Commit message standards
+- Release management
+
+**Example**: "Help me resolve this merge conflict and update my branch"
+
+---
+
+#### Testing Agent (`testing-agent.md`)
+**Expertise**: Software testing and quality assurance
+
+**Use for**:
+- Writing unit and integration tests
+- Test strategy design
+- Test automation
+- Debugging test failures
+- Coverage analysis
+
+**Example**: "Write unit tests for this authentication service"
+
+---
+
+### VFX Production Agents
+
+#### Asset Agent (`asset-agent.md`)
 **Expertise**: Asset management and publishing workflows
 
 **Use for**:
@@ -99,6 +186,17 @@ When you need specialized help with a specific VFX task, you can invoke the appr
 
 ### Choosing the Right Agent
 
+#### Software Development Tasks
+| Task Type | Use This Agent |
+|-----------|----------------|
+| Technology research/comparison | Research Agent |
+| Writing code/implementing features | Development Agent |
+| Architecture/API design | Design Agent |
+| Code review/quality check | Code Review Agent |
+| Git workflow/branching | Git Workflow Agent |
+| Writing tests/test strategy | Testing Agent |
+
+#### VFX Production Tasks
 | Task Type | Use This Agent |
 |-----------|----------------|
 | Asset publishing/versioning | Asset Agent |
@@ -111,9 +209,20 @@ When you need specialized help with a specific VFX task, you can invoke the appr
 ### When to Use Multiple Agents
 
 Some workflows may benefit from multiple agents:
+
+**Software Development Workflows:**
+- **New Feature**: Research Agent → Design Agent → Development Agent → Testing Agent → Code Review Agent
+- **Bug Fix**: Development Agent → Testing Agent → Code Review Agent
+- **Architecture Change**: Research Agent → Design Agent → Code Review Agent
+
+**VFX Production Workflows:**
 - **Asset to Shot**: Asset Agent → Shot Agent
 - **Shot to Render**: Shot Agent → Render Agent → Review Agent
 - **Full Pipeline**: All agents in sequence
+
+**Cross-Domain Workflows:**
+- **Pipeline Tool Development**: Research Agent → Design Agent → Development Agent → Pipeline Agent
+- **Automation Script**: Development Agent → Testing Agent → Pipeline Agent
 
 ## Customization
 
