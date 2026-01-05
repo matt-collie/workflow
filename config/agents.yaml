@@ -1,0 +1,119 @@
+# VFX Pipeline Multi-Agent Configuration
+
+# Asset Agent Configuration
+asset:
+  enabled: true
+  library_path: /mnt/projects/library/assets
+  publish_path: /mnt/projects/publish/assets
+  work_path: /mnt/projects/work/assets
+  naming_convention: "{type}_{name}_v{version:03d}"
+  supported_types:
+    - character
+    - prop
+    - environment
+    - vehicle
+    - creature
+  departments:
+    - model
+    - texture
+    - rig
+    - groom
+    - lookdev
+
+# Shot Agent Configuration
+shot:
+  enabled: true
+  shot_template_path: /mnt/projects/templates/shot
+  sequence_naming: "SQ{sequence:03d}"
+  shot_naming: "SH{shot:04d}"
+  default_frame_start: 1001
+  departments:
+    - layout
+    - animation
+    - fx
+    - lighting
+    - comp
+  task_dependencies:
+    layout: []
+    animation: [layout]
+    fx: [animation]
+    lighting: [animation, fx]
+    comp: [lighting]
+
+# Render Agent Configuration
+render:
+  enabled: true
+  farm_type: deadline  # deadline, tractor, or custom
+  farm_capacity: 100
+  default_priority: 50
+  render_output_path: /mnt/projects/render
+  supported_renderers:
+    - arnold
+    - renderman
+    - vray
+    - karma
+  frame_chunk_size: 10
+  retry_failed_frames: true
+  max_retries: 3
+
+# Review Agent Configuration
+review:
+  enabled: true
+  review_tool: syncsketch  # rv, syncsketch, or custom
+  dailies_schedule: "09:30"
+  review_types:
+    - internal
+    - client
+    - director
+  feedback_severity_levels:
+    - note
+    - minor
+    - major
+    - critical
+  auto_notify: true
+
+# Pipeline Agent Configuration
+pipeline:
+  enabled: true
+  tools_path: /studio/tools
+  scripts_path: /studio/scripts
+  documentation_url: http://pipeline.studio.local
+  supported_dcc:
+    - maya
+    - houdini
+    - nuke
+    - substance
+    - zbrush
+  integrations:
+    shotgun:
+      enabled: true
+      url: https://studio.shotgunstudio.com
+    deadline:
+      enabled: true
+      repository: /deadline/repository
+    perforce:
+      enabled: true
+      server: perforce.studio.local
+
+# Production Agent Configuration
+production:
+  enabled: true
+  tracking_system: shotgun  # shotgun, ftrack, or custom
+  reporting_schedule: daily  # daily, weekly, monthly
+  working_hours_per_day: 8
+  working_days_per_week: 5
+  project_templates_path: /mnt/projects/templates
+  milestone_tracking: true
+  budget_tracking: true
+  resource_management: true
+
+# Global Settings
+global:
+  log_level: INFO
+  log_path: /var/log/vfx_agents
+  database_type: postgresql  # postgresql, mysql, or mongodb
+  database_host: db.studio.local
+  database_port: 5432
+  cache_enabled: true
+  cache_ttl: 3600
+  timezone: America/Los_Angeles

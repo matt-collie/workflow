@@ -1,0 +1,17 @@
+# VFX Pipeline Multi-Agent System Requirements
+
+# Core dependencies
+pyyaml>=6.0
+python-dateutil>=2.8.2
+
+# Optional integrations (uncomment as needed)
+# shotgun-api3>=3.3.0  # Shotgun/Flow Production Tracking
+# deadline>=10.0  # Deadline render management
+# opentimelineio>=0.15.0  # Editorial interchange
+
+# Development dependencies
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.0.0
+flake8>=6.0.0
+mypy>=1.4.0
