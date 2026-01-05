@@ -1,142 +1,125 @@
-# Multi-Agent VFX Pipeline System
+# VFX Pipeline Multi-Agent System
 
-A modular multi-agent architecture designed for visual effects production pipelines.
+A collection of specialized Claude Code agents designed for visual effects production pipelines.
 
 ## Overview
 
-This system implements specialized agents for different aspects of VFX production, enabling automated workflows, intelligent task management, and seamless department coordination.
+This repository provides specialized AI agents for different aspects of VFX production. Each agent is an expert in a specific domain, helping artists, TDs, and coordinators with their daily workflows.
 
-## Architecture
+## Claude Code Agents
 
-### Agent Types
+Agents are defined as markdown files in `.claude/agents/` and can be invoked within Claude Code for specialized assistance.
 
-1. **Asset Agent** (`agents/asset/`)
-   - Asset creation and versioning
-   - Asset publishing and approval
-   - Library management and search
+### Available Agents
+
+1. **Asset Agent** (`.claude/agents/asset-agent.md`)
+   - Asset publishing and versioning
+   - Naming convention validation
    - Dependency tracking
+   - Asset library management
 
-2. **Shot Agent** (`agents/shot/`)
-   - Shot tracking and status updates
-   - Task assignment and scheduling
-   - Shot breakdown and planning
-   - Sequence management
+2. **Shot Agent** (`.claude/agents/shot-agent.md`)
+   - Shot setup and breakdown
+   - Task assignment and tracking
+   - Department coordination
+   - Production scheduling
 
-3. **Render Agent** (`agents/render/`)
+3. **Render Agent** (`.claude/agents/render-agent.md`)
    - Render job submission and monitoring
-   - Farm resource allocation
+   - Farm resource optimization
+   - Error troubleshooting
    - Priority management
-   - Error detection and recovery
 
-4. **Review Agent** (`agents/review/`)
-   - Dailies session management
-   - Client review coordination
+4. **Review Agent** (`.claude/agents/review-agent.md`)
+   - Review session coordination
    - Feedback collection and routing
-   - Version comparison
+   - Approval tracking
+   - Dailies management
 
-5. **Pipeline Agent** (`agents/pipeline/`)
-   - Tool development assistance
+5. **Pipeline Agent** (`.claude/agents/pipeline-agent.md`)
    - Technical troubleshooting
-   - Pipeline optimization
-   - Integration management
+   - Tool development assistance
+   - Environment validation
+   - Integration support
 
-6. **Production Agent** (`agents/production/`)
+6. **Production Agent** (`.claude/agents/production-agent.md`)
    - Production tracking and reporting
    - Resource allocation
    - Schedule management
-   - Deliverable tracking
+   - Progress metrics
+
+See [.claude/README.md](.claude/README.md) for detailed agent documentation.
 
 ## Directory Structure
 
 ```
 .
-├── agents/              # Individual agent implementations
-│   ├── asset/          # Asset management agent
-│   ├── shot/           # Shot production agent
-│   ├── render/         # Render farm agent
-│   ├── review/         # Review & approval agent
-│   ├── pipeline/       # Pipeline TD agent
-│   └── production/     # Production management agent
-├── shared/             # Shared resources
-│   ├── utils/          # Common utilities
-│   ├── models/         # Data models
-│   └── database/       # Database interfaces
-├── config/             # Configuration files
-├── docs/               # Documentation
-├── examples/           # Example workflows
-├── scripts/            # Utility scripts
-└── tests/              # Test suite
+├── .claude/
+│   ├── agents/              # Claude Code agent definitions (markdown)
+│   │   ├── asset-agent.md
+│   │   ├── shot-agent.md
+│   │   ├── render-agent.md
+│   │   ├── review-agent.md
+│   │   ├── pipeline-agent.md
+│   │   └── production-agent.md
+│   └── README.md            # Agent usage guide
+├── agents/                  # Reference Python implementations
+├── shared/                  # Shared utilities and models
+├── config/                  # Configuration examples
+├── docs/                    # Architecture documentation
+└── examples/                # Example workflows
 ```
 
 ## Getting Started
 
-### Installation
+### Using Claude Code Agents
 
-```bash
-pip install -r requirements.txt
-```
+The agents in `.claude/agents/` are ready to use with Claude Code. Simply invoke the appropriate agent when you need specialized help with VFX tasks.
 
-### Configuration
+**Examples:**
+- Need help publishing an asset? Use the Asset Agent
+- Setting up a new shot? Use the Shot Agent
+- Troubleshooting render issues? Use the Render Agent
 
-Edit `config/agents.yaml` to customize agent settings for your pipeline.
+### Reference Implementation
 
-### Running Agents
-
-```python
-from agents.asset.agent import AssetAgent
-
-# Initialize agent
-agent = AssetAgent(config_path="config/agents.yaml")
-
-# Execute task
-result = agent.process_request("publish asset: character_hero_v003")
-```
+The `agents/` directory contains Python reference implementations showing how you might build automation tools around these agent concepts. See `examples/` for workflow demonstrations.
 
 ## Typical Workflows
 
-### Asset Publishing Workflow
-1. Artist completes asset
-2. Asset Agent validates structure and naming
-3. Asset Agent publishes to library
-4. Review Agent notifies stakeholders
-5. Production Agent updates tracking
+### Asset Publishing
+1. Asset Agent helps validate naming and structure
+2. Asset Agent guides through publishing process
+3. Production Agent updates tracking
 
-### Shot Production Workflow
-1. Shot Agent receives shot assignment
-2. Shot Agent breaks down tasks by department
-3. Render Agent monitors render completion
-4. Review Agent collects feedback
-5. Production Agent tracks milestones
+### Shot Production
+1. Shot Agent sets up shot and breaks down tasks
+2. Department artists complete work
+3. Render Agent manages render submissions
+4. Review Agent coordinates feedback
+5. Production Agent tracks progress
 
-### Render Management Workflow
-1. Render Agent receives submission
-2. Render Agent allocates farm resources
-3. Render Agent monitors progress
-4. Render Agent handles errors/retries
-5. Render Agent notifies on completion
+### Technical Support
+1. Pipeline Agent helps diagnose issues
+2. Pipeline Agent suggests solutions
+3. Pipeline Agent validates fixes
 
 ## Integration Points
 
-- **Shotgun/Flow Production Tracking**: Production database integration
-- **Deadline/Tractor**: Render farm management
-- **RV/Syncsketch**: Review and playback tools
-- **Perforce/Git**: Version control systems
-- **Maya/Houdini/Nuke**: DCC applications
+These agents are designed to work with industry-standard VFX tools:
+- **Shotgun/Flow Production Tracking**
+- **Deadline/Tractor** (render management)
+- **RV/Syncsketch** (review tools)
+- **Maya/Houdini/Nuke** (DCC applications)
+- **Git/Perforce** (version control)
 
-## Development
+## Customization
 
-### Adding New Agents
-
-1. Create directory under `agents/`
-2. Implement agent class extending `BaseAgent`
-3. Define capabilities in agent config
-4. Add tests in `tests/`
-
-### Testing
-
-```bash
-pytest tests/
-```
+You can customize agents for your studio by editing the markdown files in `.claude/agents/`:
+- Update naming conventions
+- Add studio-specific tools
+- Include custom workflows
+- Add department guidelines
 
 ## License
 
